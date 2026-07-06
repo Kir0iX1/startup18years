@@ -1,3 +1,5 @@
+import { Reveal } from '@/components/reveal'
+
 const stats = [
   {
     value: '73%',
@@ -25,15 +27,16 @@ export function Stats() {
     >
       <div className="mx-auto grid max-w-6xl grid-cols-1 md:grid-cols-4">
         {stats.map((s, i) => (
-          <div
+          <Reveal
             key={s.value}
+            delay={i * 120}
             className={`p-6 md:p-8 ${i > 0 ? 'border-t border-border md:border-l md:border-t-0' : ''}`}
           >
             <div className="text-4xl font-bold tracking-tight">{s.value}</div>
             <p className="mt-2 font-mono text-xs uppercase leading-relaxed tracking-wide text-muted-foreground">
               {s.label}
             </p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

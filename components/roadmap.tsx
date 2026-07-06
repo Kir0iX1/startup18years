@@ -1,3 +1,5 @@
+import { Reveal } from '@/components/reveal'
+
 const steps = [
   {
     phase: '0–3 МЕС.',
@@ -45,21 +47,23 @@ export function Roadmap() {
   return (
     <section id="roadmap" className="border-b border-border bg-card">
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
-        <div className="font-mono text-xs tracking-widest text-muted-foreground">
-          {'РАЗДЕЛ 02 — СТРАТЕГИЯ'}
-        </div>
-        <h2 className="mt-4 text-balance text-3xl font-bold uppercase tracking-tight md:text-5xl">
-          {'Дорожная карта: 18 → доход'}
-        </h2>
-        <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          {
-            'Универсальная модель роста дохода, применимая к любой из профессий выше. Ключевой принцип: быстрые деньги финансируют обучение, навык создаёт капитал.'
-          }
-        </p>
+        <Reveal>
+          <div className="font-mono text-xs tracking-widest text-muted-foreground">
+            {'РАЗДЕЛ 02 — СТРАТЕГИЯ'}
+          </div>
+          <h2 className="mt-4 text-balance text-3xl font-bold uppercase tracking-tight md:text-5xl">
+            {'Дорожная карта: 18 → доход'}
+          </h2>
+          <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
+            {
+              'Универсальная модель роста дохода, применимая к любой из профессий выше. Ключевой принцип: быстрые деньги финансируют обучение, навык создаёт капитал.'
+            }
+          </p>
+        </Reveal>
 
         <ol className="mt-10 grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <li key={s.phase} className="flex flex-col bg-background p-6">
+            <Reveal key={s.phase} as="li" delay={i * 130} className="flex flex-col bg-background p-6">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-xs font-bold tracking-widest text-accent">
                   {String(i + 1).padStart(2, '0')}
@@ -82,7 +86,7 @@ export function Roadmap() {
                   </li>
                 ))}
               </ul>
-            </li>
+            </Reveal>
           ))}
         </ol>
       </div>
