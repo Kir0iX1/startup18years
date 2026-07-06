@@ -1,3 +1,5 @@
+import { Reveal } from '@/components/reveal'
+
 const principles = [
   {
     n: '01',
@@ -35,22 +37,24 @@ export function Principles() {
   return (
     <section id="principles" className="border-b border-border bg-primary text-primary-foreground">
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
-        <div className="font-mono text-xs tracking-widest opacity-70">
-          {'РАЗДЕЛ 04 — ВЫВОДЫ ИССЛЕДОВАНИЯ'}
-        </div>
-        <h2 className="mt-4 text-balance text-3xl font-bold uppercase tracking-tight md:text-5xl">
-          {'Шесть принципов дохода'}
-        </h2>
+        <Reveal>
+          <div className="font-mono text-xs tracking-widest opacity-70">
+            {'РАЗДЕЛ 04 — ВЫВОДЫ ИССЛЕДОВАНИЯ'}
+          </div>
+          <h2 className="mt-4 text-balance text-3xl font-bold uppercase tracking-tight md:text-5xl">
+            {'Шесть принципов дохода'}
+          </h2>
+        </Reveal>
 
         <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
-          {principles.map((p) => (
-            <div key={p.n} className="border-t border-primary-foreground/20 pt-4">
+          {principles.map((p, i) => (
+            <Reveal key={p.n} delay={(i % 3) * 120} className="border-t border-primary-foreground/20 pt-4">
               <div className="font-mono text-xs font-bold tracking-widest text-accent">
                 {p.n}
               </div>
               <h3 className="mt-2 text-lg font-bold">{p.title}</h3>
               <p className="mt-2 text-sm leading-relaxed opacity-80">{p.text}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

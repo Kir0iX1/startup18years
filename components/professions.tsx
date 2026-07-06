@@ -1,6 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type CSSProperties } from 'react'
+
+import { Reveal } from '@/components/reveal'
 
 type Category = 'ВСЕ' | 'IT' | 'КРЕАТИВ' | 'СЕРВИС' | 'БИЗНЕС'
 
@@ -154,17 +156,19 @@ export function Professions() {
   return (
     <section id="professions" className="border-b border-border">
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
-        <div className="font-mono text-xs tracking-widest text-muted-foreground">
-          {'РАЗДЕЛ 01 — ИССЛЕДОВАНИЕ РЫНКА'}
-        </div>
-        <h2 className="mt-4 text-balance text-3xl font-bold uppercase tracking-tight md:text-5xl">
-          {'Актуальные профессии 2026'}
-        </h2>
-        <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          {
-            'Отобраны по трём критериям: доступность входа с 18 лет, устойчивый спрос на рынке и потенциал роста дохода. Зарплатные вилки — по данным открытых агрегаторов вакансий.'
-          }
-        </p>
+        <Reveal>
+          <div className="font-mono text-xs tracking-widest text-muted-foreground">
+            {'РАЗДЕЛ 01 — ИССЛЕДОВАНИЕ РЫНКА'}
+          </div>
+          <h2 className="mt-4 text-balance text-3xl font-bold uppercase tracking-tight md:text-5xl">
+            {'Актуальные профессии 2026'}
+          </h2>
+          <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
+            {
+              'Отобраны по трём критериям: доступность входа с 18 лет, устойчивый спрос на рынке и потенциал роста дохода. Зарплатные вилки — по данным открытых агрегаторов вакансий.'
+            }
+          </p>
+        </Reveal>
 
         <div className="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Фильтр по категориям">
           {categories.map((c) => (
@@ -185,11 +189,12 @@ export function Professions() {
           ))}
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p) => (
+        <div key={active} className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {filtered.map((p, i) => (
             <article
               key={p.title}
-              className="flex flex-col border border-border bg-card p-6"
+              style={{ '--card-delay': `${i * 60}ms` } as CSSProperties}
+              className="animate-card-in flex flex-col border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="flex items-start justify-between gap-3">
                 <span className="font-mono text-xs tracking-widest text-muted-foreground">

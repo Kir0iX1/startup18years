@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from 'react'
 
+import { Reveal } from '@/components/reveal'
+
 const tracks = [
   { name: 'IT / разработка', base: 80, growth: 0.045 },
   { name: 'Креатив / дизайн', base: 60, growth: 0.035 },
@@ -37,21 +39,23 @@ export function Calculator() {
   return (
     <section id="calculator" className="border-b border-border">
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
-        <div className="font-mono text-xs tracking-widest text-muted-foreground">
-          {'РАЗДЕЛ 03 — ИНТЕРАКТИВ'}
-        </div>
-        <h2 className="mt-4 text-balance text-3xl font-bold uppercase tracking-tight md:text-5xl">
-          {'Калькулятор потенциала'}
-        </h2>
-        <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-          {
-            'Модель оценивает потенциальный доход исходя из направления, вложенного времени и горизонта. Это иллюстрация принципа сложного процента в навыках, а не финансовая гарантия.'
-          }
-        </p>
+        <Reveal>
+          <div className="font-mono text-xs tracking-widest text-muted-foreground">
+            {'РАЗДЕЛ 03 — ИНТЕРАКТИВ'}
+          </div>
+          <h2 className="mt-4 text-balance text-3xl font-bold uppercase tracking-tight md:text-5xl">
+            {'Калькулятор потенциала'}
+          </h2>
+          <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
+            {
+              'Модель оценивает потенциальный доход исходя из направления, вложенного времени и горизонта. Это иллюстрация принципа сложного процента в навыках, а не финансовая гарантия.'
+            }
+          </p>
+        </Reveal>
 
         <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-5">
           {/* Inputs */}
-          <div className="flex flex-col gap-6 border border-border bg-card p-6 lg:col-span-3 md:p-8">
+          <Reveal delay={120} className="flex flex-col gap-6 border border-border bg-card p-6 lg:col-span-3 md:p-8">
             <div>
               <label
                 htmlFor="track"
@@ -123,15 +127,18 @@ export function Calculator() {
                 className="mt-3 w-full accent-[oklch(0.72_0.17_45)]"
               />
             </div>
-          </div>
+          </Reveal>
 
           {/* Results */}
-          <div className="flex flex-col gap-4 lg:col-span-2">
+          <Reveal delay={240} className="flex flex-col gap-4 lg:col-span-2">
             <div className="flex-1 bg-lime p-6 text-lime-foreground md:p-8">
               <div className="font-mono text-xs font-bold tracking-widest">
                 {'ДОХОД / МЕС. ЧЕРЕЗ ' + years * 12 + ' МЕС.'}
               </div>
-              <div className="mt-2 text-4xl font-bold tracking-tight md:text-5xl">
+              <div
+                key={`m-${trackIdx}-${hours}-${years}`}
+                className="animate-value mt-2 text-4xl font-bold tracking-tight md:text-5xl"
+              >
                 {formatRub(result.monthly)}
               </div>
               <div className="mt-2 font-mono text-xs tracking-wide">
@@ -142,7 +149,10 @@ export function Calculator() {
               <div className="font-mono text-xs font-bold tracking-widest">
                 {'НАКОПЛЕННЫЙ ДОХОД ЗА ПЕРИОД'}
               </div>
-              <div className="mt-2 text-4xl font-bold tracking-tight md:text-5xl">
+              <div
+                key={`t-${trackIdx}-${hours}-${years}`}
+                className="animate-value mt-2 text-4xl font-bold tracking-tight md:text-5xl"
+              >
                 {result.total >= 1000
                   ? `${(result.total / 1000).toFixed(1).replace('.', ',')} млн ₽`
                   : formatRub(result.total)}
@@ -151,7 +161,7 @@ export function Calculator() {
                 {'при регулярной практике ' + hours + ' ч/день'}
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         <p className="mt-4 font-mono text-[10px] tracking-wide text-muted-foreground">
