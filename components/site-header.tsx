@@ -33,10 +33,22 @@ export function SiteHeader() {
             КАЛЬКУЛЯТОР
           </a>
           <a
+            href="#quiz"
+            className="whitespace-nowrap font-mono text-xs font-semibold tracking-widest hover:text-accent"
+          >
+            ТЕСТ
+          </a>
+          <a
             href="#principles"
             className="whitespace-nowrap font-mono text-xs font-semibold tracking-widest hover:text-accent"
           >
             ПРИНЦИПЫ
+          </a>
+          <a
+            href="#faq"
+            className="whitespace-nowrap font-mono text-xs font-semibold tracking-widest hover:text-accent"
+          >
+            FAQ
           </a>
         </div>
       </nav>
