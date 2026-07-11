@@ -99,6 +99,21 @@ export function Quiz() {
     setScores({ it: 0, creative: 0, service: 0, business: 0 })
   }
 
+  const trackToCategory: Record<TrackKey, string> = {
+    it: 'IT',
+    creative: 'КРЕАТИВ',
+    service: 'СЕРВИС',
+    business: 'БИЗНЕС',
+  }
+
+  function goToProfessions() {
+    window.dispatchEvent(
+      new CustomEvent('start18:select-category', {
+        detail: trackToCategory[result],
+      })
+    )
+  }
+
   return (
     <section id="quiz" className="border-b border-border bg-card">
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
@@ -164,6 +179,7 @@ export function Quiz() {
                   <div className="mt-8 flex flex-wrap gap-3">
                     <a
                       href="#professions"
+                      onClick={goToProfessions}
                       className="bg-primary px-5 py-3 font-mono text-xs font-bold tracking-widest text-primary-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                     >
                       {'СМОТРЕТЬ ПРОФЕССИИ →'}
