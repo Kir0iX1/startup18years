@@ -86,6 +86,18 @@
   }
 }
 
+/* --- Horizontal nav scroll (mobile) --- */
+.nav-scroll {
+  touch-action: pan-x pan-y;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 /* --- Scroll reveal system --- */
 .reveal {
   opacity: 0;
