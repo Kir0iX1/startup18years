@@ -150,6 +150,17 @@ const demandColor: Record<Profession['demand'], string> = {
 export function Professions() {
   const [active, setActive] = useState<Category>('ВСЕ')
 
+  useEffect(() => {
+    function onSelectCategory(e: Event) {
+      const category = (e as CustomEvent<string>).detail
+      if (categories.includes(category as Category)) {
+        setActive(category as Category)
+      }
+    }
+    window.addEventListener('start18:select-category', onSelectCategory)
+    return () => window.removeEventListener('start18:select-category', onSelectCategory)
+  }, [])
+
   const filtered =
     active === 'ВСЕ' ? professions : professions.filter((p) => p.category === active)
 
