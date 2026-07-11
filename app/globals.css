@@ -86,16 +86,26 @@
   }
 }
 
-/* --- Horizontal nav scroll (mobile) --- */
+/* --- Horizontal nav scroll (mobile) — thin accent scrollbar --- */
 .nav-scroll {
   touch-action: pan-x pan-y;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
-  scrollbar-width: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
 }
 
 .nav-scroll::-webkit-scrollbar {
-  display: none;
+  height: 3px;
+}
+
+.nav-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nav-scroll::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 9999px;
 }
 
 /* --- Scroll reveal system --- */
