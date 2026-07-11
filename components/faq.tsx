@@ -1,3 +1,7 @@
+'use client'
+
+import { useState } from 'react'
+
 import { Reveal } from '@/components/reveal'
 
 const items = [
@@ -28,6 +32,8 @@ const items = [
 ]
 
 export function Faq() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+
   return (
     <section id="faq" className="border-b border-border">
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
@@ -46,24 +52,53 @@ export function Faq() {
         </Reveal>
 
         <div className="mt-10 flex flex-col gap-px border border-border bg-border">
-          {items.map((item, i) => (
-            <Reveal key={item.q} delay={i * 60}>
-              <details className="group bg-background">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-bold transition-colors hover:text-accent md:p-6 [&::-webkit-details-marker]:hidden">
-                  <span className="text-pretty">{item.q}</span>
-                  <span
-                    aria-hidden="true"
-                    className="shrink-0 font-mono text-xl leading-none text-accent transition-transform duration-300 group-open:rotate-45"
+          {items.map((item, i) => {
+            const isOpen = openIndex === i
+            return (
+              <Reveal key={item.q} delay={i * 60}>
+                <div className="bg-background">
+                  <h3>
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-panel-${i}`}
+                      onClick={() => setOpenIndex(isOpen ? null : i)}
+                      className={`flex w-full cursor-pointer items-center justify-between gap-4 p-5 text-left font-bold transition-colors duration-300 md:p-6 ${
+                        isOpen ? 'text-accent' : 'hover:text-accent'
+                      }`}
+                    >
+                      <span className="text-pretty">{item.q}</span>
+                      <span
+                        aria-hidden="true"
+                        className={`shrink-0 font-mono text-xl leading-none text-accent transition-transform duration-300 ease-out ${
+                          isOpen ? 'rotate-45' : 'rotate-0'
+                        }`}
+                      >
+                        {'+'}
+                      </span>
+                    </button>
+                  </h3>
+                  <div
+                    id={`faq-panel-${i}`}
+                    role="region"
+                    className={`grid transition-[grid-template-rows] duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                    }`}
                   >
-                    {'+'}
-                  </span>
-                </summary>
-                <p className="px-5 pb-5 text-sm leading-relaxed text-muted-foreground md:px-6 md:pb-6">
-                  {item.a}
-                </p>
-              </details>
-            </Reveal>
-          ))}
+                    <div className="overflow-hidden">
+                      <p
+                        className={`px-5 pb-5 text-sm leading-relaxed text-muted-foreground transition-all duration-400 ease-out md:px-6 md:pb-6 ${
+                          isOpen ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0'
+                        }`}
+                      >
+                        {item.a}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            )
+          })}
         </div>
       </div>
     </section>
