@@ -11,9 +11,13 @@ export function SiteHeader() {
       </div>
       <nav
         aria-label="Основная навигация"
-        className="border-t border-border"
+        className="relative border-t border-border"
       >
-        <div className="mx-auto flex max-w-6xl items-center gap-6 overflow-x-auto px-4 py-3 md:px-6">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-background to-transparent md:hidden"
+        />
+        <div className="nav-scroll mx-auto flex max-w-6xl items-center gap-6 overflow-x-auto px-4 py-3 md:px-6">
           <a
             href="#professions"
             className="whitespace-nowrap font-mono text-xs font-semibold tracking-widest hover:text-accent"
