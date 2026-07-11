@@ -38,34 +38,31 @@ export function Hero() {
       </div>
 
       <div className="grid grid-cols-1 border-t border-border md:grid-cols-3">
-        <Reveal
-          delay={150}
-          className="bg-lime p-6 text-lime-foreground transition-transform duration-300 hover:-translate-y-1 md:p-8"
-        >
-          <div className="font-mono text-xs tracking-widest">ШАГ 01 — НАВЫК</div>
-          <p className="mt-3 text-lg font-semibold leading-snug">
-            {'Выбери навык, за который рынок платит уже сегодня.'}
-          </p>
-        </Reveal>
-        <Reveal
-          delay={280}
-          className="bg-secondary p-6 transition-transform duration-300 hover:-translate-y-1 md:p-8"
-        >
-          <div className="font-mono text-xs tracking-widest text-muted-foreground">
-            ШАГ 02 — ПРАКТИКА
+        <Reveal delay={150}>
+          <div className="h-full bg-lime p-6 text-lime-foreground transition-transform duration-300 ease-out hover:-translate-y-1 md:p-8">
+            <div className="font-mono text-xs tracking-widest">ШАГ 01 — НАВЫК</div>
+            <p className="mt-3 text-lg font-semibold leading-snug">
+              {'Выбери навык, за который рынок платит уже сегодня.'}
+            </p>
           </div>
-          <p className="mt-3 text-lg font-semibold leading-snug">
-            {'Первые деньги через фриланс, стажировки и подработку.'}
-          </p>
         </Reveal>
-        <Reveal
-          delay={410}
-          className="bg-accent p-6 text-accent-foreground transition-transform duration-300 hover:-translate-y-1 md:p-8"
-        >
-          <div className="font-mono text-xs tracking-widest">ШАГ 03 — МАСШТАБ</div>
-          <p className="mt-3 text-lg font-semibold leading-snug">
-            {'Рост ставки, специализация и собственные проекты.'}
-          </p>
+        <Reveal delay={280}>
+          <div className="h-full bg-secondary p-6 transition-transform duration-300 ease-out hover:-translate-y-1 md:p-8">
+            <div className="font-mono text-xs tracking-widest text-muted-foreground">
+              ШАГ 02 — ПРАКТИКА
+            </div>
+            <p className="mt-3 text-lg font-semibold leading-snug">
+              {'Первые деньги через фриланс, стажировки и подработку.'}
+            </p>
+          </div>
+        </Reveal>
+        <Reveal delay={410}>
+          <div className="h-full bg-accent p-6 text-accent-foreground transition-transform duration-300 ease-out hover:-translate-y-1 md:p-8">
+            <div className="font-mono text-xs tracking-widest">ШАГ 03 — МАСШТАБ</div>
+            <p className="mt-3 text-lg font-semibold leading-snug">
+              {'Рост ставки, специализация и собственные проекты.'}
+            </p>
+          </div>
         </Reveal>
       </div>
     </section>
