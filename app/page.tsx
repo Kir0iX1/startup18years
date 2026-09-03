@@ -6,6 +6,8 @@ import { Roadmap } from '@/components/roadmap'
 import { Scenarios } from '@/components/scenarios'
 import { Calculator } from '@/components/calculator'
 import { GoalSimulator } from '@/components/goal-simulator'
+import { Mentor } from '@/components/mentor'
+import { BusinessModel } from '@/components/business-model'
 import { Principles } from '@/components/principles'
 import { Quiz } from '@/components/quiz'
 import { Faq } from '@/components/faq'
@@ -23,7 +25,9 @@ export default function Page() {
         <Scenarios />
         <Calculator />
         <GoalSimulator />
+        <Mentor />
         <Quiz />
+        <BusinessModel />
         <Principles />
         <Faq />
       </main>

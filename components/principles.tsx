@@ -39,7 +39,7 @@ export function Principles() {
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
         <Reveal>
           <div className="font-mono text-xs tracking-widest opacity-70">
-            {'РАЗДЕЛ 07 — ВЫВОДЫ ИССЛЕДОВАНИЯ'}
+            {'РАЗДЕЛ 09 — ВЫВОДЫ ИССЛЕДОВАНИЯ'}
           </div>
           <h2 className="mt-4 text-balance text-3xl font-bold uppercase tracking-tight md:text-5xl">
             {'Шесть принципов дохода'}

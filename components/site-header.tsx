@@ -49,10 +49,22 @@ export function SiteHeader() {
             ЦЕЛЬ
           </a>
           <a
+            href="#mentor"
+            className="whitespace-nowrap font-mono text-xs font-semibold tracking-widest text-accent hover:text-foreground"
+          >
+            ИИ-МЕНТОР
+          </a>
+          <a
             href="#quiz"
             className="whitespace-nowrap font-mono text-xs font-semibold tracking-widest hover:text-accent"
           >
             ТЕСТ
+          </a>
+          <a
+            href="#business"
+            className="whitespace-nowrap font-mono text-xs font-semibold tracking-widest hover:text-accent"
+          >
+            БИЗНЕС-МОДЕЛЬ
           </a>
           <a
             href="#principles"

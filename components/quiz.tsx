@@ -119,7 +119,7 @@ export function Quiz() {
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
         <Reveal>
           <div className="font-mono text-xs tracking-widest text-muted-foreground">
-            {'РАЗДЕЛ 06 — ТЕСТ'}
+            {'РАЗДЕЛ 07 — ТЕСТ'}
           </div>
           <h2 className="mt-4 text-balance text-3xl font-bold uppercase tracking-tight md:text-5xl">
             {'Подбери своё направление'}
