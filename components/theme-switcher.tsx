@@ -1,126 +1,75 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { Moon, Sun } from 'lucide-react'
 
-type ThemeId = 'cream' | 'night' | 'paper' | 'fire'
+type Theme = 'cream' | 'night'
 
-interface Theme {
-  id: ThemeId
-  label: string
-  note: string
-  /** Swatch colors: background, foreground, accent */
-  swatch: [string, string, string]
+export const THEME_STORAGE_KEY = 'start18-theme'
+
+function readTheme(): Theme {
+  return document.documentElement.getAttribute('data-theme') === 'night' ? 'night' : 'cream'
 }
 
-const themes: Theme[] = [
-  {
-    id: 'cream',
-    label: 'A · Крем',
-    note: 'Текущая. Тёплый крем, чёрный, лайм + оранжевый',
-    swatch: ['oklch(0.945 0.012 85)', 'oklch(0.16 0.005 80)', 'oklch(0.9 0.2 118)'],
-  },
-  {
-    id: 'night',
-    label: 'B · Ночь',
-    note: 'Тёмный графит, электрик-лайм, янтарь',
-    swatch: ['oklch(0.17 0.008 260)', 'oklch(0.96 0.005 90)', 'oklch(0.88 0.22 125)'],
-  },
-  {
-    id: 'paper',
-    label: 'C · Бумага',
-    note: 'Холодный белый, чернильный синий, кобальт',
-    swatch: ['oklch(0.975 0.004 240)', 'oklch(0.2 0.03 262)', 'oklch(0.55 0.2 262)'],
-  },
-  {
-    id: 'fire',
-    label: 'D · Огонь',
-    note: 'Тёплый песок, эспрессо, один коралловый акцент',
-    swatch: ['oklch(0.955 0.02 70)', 'oklch(0.22 0.02 40)', 'oklch(0.66 0.21 30)'],
-  },
-]
+function applyTheme(theme: Theme) {
+  const html = document.documentElement
+  html.setAttribute('data-theme-switching', '')
+  window.setTimeout(() => html.removeAttribute('data-theme-switching'), 700)
+  if (theme === 'night') html.setAttribute('data-theme', 'night')
+  else html.removeAttribute('data-theme')
+  window.localStorage.setItem(THEME_STORAGE_KEY, theme)
+}
 
-const STORAGE_KEY = 'start18-theme-preview'
+/**
+ * Light / dark toggle for the header.
+ * The initial theme is applied by an inline script in layout.tsx before paint,
+ * so here we only read the current state after mount to avoid a hydration mismatch.
+ */
+export function ThemeToggle() {
+  const [theme, setTheme] = useState<Theme | null>(null)
 
-export function ThemeSwitcher() {
-  const [active, setActive] = useState<ThemeId>('cream')
-  const [open, setOpen] = useState(true)
-
-  // Restore the previously previewed theme on load
   useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_KEY) as ThemeId | null
-    if (saved && themes.some((t) => t.id === saved)) {
-      apply(saved, false)
-      setActive(saved)
-    }
+    setTheme(readTheme())
   }, [])
 
-  function apply(id: ThemeId, animate = true) {
-    const html = document.documentElement
-    if (animate) {
-      html.setAttribute('data-theme-switching', '')
-      window.setTimeout(() => html.removeAttribute('data-theme-switching'), 700)
-    }
-    if (id === 'cream') html.removeAttribute('data-theme')
-    else html.setAttribute('data-theme', id)
-    window.localStorage.setItem(STORAGE_KEY, id)
+  function toggle() {
+    const next: Theme = theme === 'night' ? 'cream' : 'night'
+    applyTheme(next)
+    setTheme(next)
   }
 
-  function choose(id: ThemeId) {
-    setActive(id)
-    apply(id)
-  }
-
-  const current = themes.find((t) => t.id === active) ?? themes[0]
+  const isNight = theme === 'night'
 
   return (
-    <div
-      className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-4 pb-4"
-      role="region"
-      aria-label="Выбор цветовой схемы"
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label={isNight ? 'Включить светлую тему' : 'Включить тёмную тему'}
+      aria-pressed={isNight}
+      title={isNight ? 'Светлая тема' : 'Тёмная тема'}
+      className="hover-card group flex items-center gap-2 border border-border bg-card px-2.5 py-1.5 hover:border-foreground!"
     >
-      <div className="w-full max-w-2xl border border-foreground bg-card text-card-foreground shadow-[0_24px_60px_-24px_oklch(0_0_0/0.45)]">
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          className="flex w-full items-center justify-between px-4 py-2.5 text-left"
-        >
-          <span className="flex items-center gap-3">
-            <span className="font-mono text-[10px] tracking-widest text-muted-foreground">ПРЕВЬЮ ПАЛИТРЫ</span>
-            <span className="font-mono text-xs font-semibold tracking-widest">{current.label}</span>
-          </span>
-          <span className="font-mono text-xs text-muted-foreground">{open ? 'СВЕРНУТЬ' : 'РАЗВЕРНУТЬ'}</span>
-        </button>
-
-        {open && (
-          <div className="border-t border-border p-3">
-            <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
-              {themes.map((t) => {
-                const isActive = t.id === active
-                return (
-                  <button
-                    key={t.id}
-                    type="button"
-                    onClick={() => choose(t.id)}
-                    aria-pressed={isActive}
-                    className={`hover-card flex flex-col gap-2 border p-3 text-left ${
-                      isActive ? 'border-foreground bg-background' : 'border-border bg-card'
-                    }`}
-                  >
-                    <span className="flex h-8 w-full overflow-hidden border border-border">
-                      {t.swatch.map((c, i) => (
-                        <span key={i} className="flex-1" style={{ backgroundColor: c }} />
-                      ))}
-                    </span>
-                    <span className="font-mono text-xs font-semibold tracking-widest">{t.label}</span>
-                  </button>
-                )
-              })}
-            </div>
-            <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{current.note}</p>
-          </div>
-        )}
-      </div>
-    </div>
+      {/* Mini palette swatch: background / foreground / accent */}
+      <span aria-hidden="true" className="flex h-4 w-9 overflow-hidden border border-border">
+        <span className="flex-1 bg-background transition-colors duration-500" />
+        <span className="flex-1 bg-foreground transition-colors duration-500" />
+        <span className="flex-1 bg-lime transition-colors duration-500" />
+      </span>
+      <span className="relative flex size-4 items-center justify-center">
+        <Sun
+          className={`absolute size-4 transition-[transform,opacity] duration-500 ease-out ${
+            theme === null || !isNight ? 'rotate-0 opacity-100' : 'rotate-90 opacity-0'
+          }`}
+        />
+        <Moon
+          className={`absolute size-4 transition-[transform,opacity] duration-500 ease-out ${
+            isNight ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'
+          }`}
+        />
+      </span>
+      <span className="hidden font-mono text-[10px] font-semibold tracking-widest md:inline">
+        {theme === null ? 'ТЕМА' : isNight ? 'НОЧЬ' : 'КРЕМ'}
+      </span>
+    </button>
   )
 }

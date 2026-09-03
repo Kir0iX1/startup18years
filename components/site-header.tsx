@@ -1,3 +1,5 @@
+import { ThemeToggle } from '@/components/theme-switcher'
+
 export function SiteHeader() {
   return (
     <header className="border-b border-border">
@@ -5,8 +7,11 @@ export function SiteHeader() {
         <a href="#" className="font-mono text-sm font-bold tracking-widest">
           {'СТАРТ18 ®'}
         </a>
-        <div className="hidden font-mono text-xs tracking-widest text-muted-foreground md:block">
-          {'РЫНОК ТРУДА — 2026'}
+        <div className="flex items-center gap-4">
+          <div className="hidden font-mono text-xs tracking-widest text-muted-foreground md:block">
+            {'РЫНОК ТРУДА — 2026'}
+          </div>
+          <ThemeToggle />
         </div>
       </div>
       <nav
