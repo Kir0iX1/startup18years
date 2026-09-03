@@ -65,42 +65,6 @@ const principles = [
   },
 ]
 
-const sustainability = [
-  { label: 'Гранты', value: 'Росмолодёжь', note: 'конкурсы молодёжных социальных проектов до 1 млн ₽' },
-  { label: 'Фонды', value: 'ФСИ', note: 'программа «Студенческий стартап» — 1 млн ₽ на MVP' },
-  { label: 'Хостинг', value: '0 ₽', note: 'бесплатный тариф Vercel покрывает до 100 тыс. визитов' },
-  { label: 'ИИ', value: '~2 000 ₽', note: 'месячная стоимость ИИ-ментора при 10 тыс. запросов' },
-  { label: 'Команда', value: 'Студенты', note: 'разработка силами студентов — практика вместо зарплаты' },
-  { label: 'Итого', value: '< 5 000 ₽', note: 'ежемесячные расходы платформы на 10 тыс. пользователей' },
-]
-
-const roadmap = [
-  {
-    quarter: 'Q4 2026',
-    title: 'MVP и первые 1 000 пользователей',
-    items: ['Запуск платформы (готово)', 'ИИ-ментор (готово)', 'Пилот в 2 вузах'],
-    status: 'now',
-  },
-  {
-    quarter: 'Q1 2027',
-    title: 'Личный кабинет',
-    items: ['Трекер целей и прогресса', 'Сохранение результатов теста', 'Мобильная версия PWA'],
-    status: 'next',
-  },
-  {
-    quarter: 'Q2–Q3 2027',
-    title: 'Сообщество',
-    items: ['Истории успеха пользователей', 'Открытые вакансии для новичков', 'Партнёрства с 10 вузами'],
-    status: 'later',
-  },
-  {
-    quarter: '2028',
-    title: 'Масштабирование',
-    items: ['Выход на СНГ', '100 000+ пользователей', 'Грант на развитие'],
-    status: 'later',
-  },
-]
-
 export function BusinessModel() {
   const [activeCard, setActiveCard] = useState(0)
 
@@ -177,55 +141,6 @@ export function BusinessModel() {
             )
           })}
         </div>
-
-        {/* Sustainability */}
-        <Reveal className="mt-16">
-          <h3 className="font-mono text-xs tracking-widest text-muted-foreground">{'НА ЧЁМ ДЕРЖИТСЯ ПРОЕКТ БЕЗ ПЛАТЫ С ПОЛЬЗОВАТЕЛЕЙ'}</h3>
-        </Reveal>
-        <div className="mt-6 grid grid-cols-2 gap-px bg-border md:grid-cols-3">
-          {sustainability.map((u, i) => (
-            <Reveal key={u.label} delay={i * 80} className="min-w-0 bg-background p-5 transition-colors duration-500 ease-out hover:bg-card">
-              <div className="font-mono text-xs tracking-widest text-muted-foreground">{u.label}</div>
-              <div className="mt-2 text-xl font-bold tracking-tight text-pretty md:text-2xl">{u.value}</div>
-              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{u.note}</p>
-            </Reveal>
-          ))}
-        </div>
-
-        {/* Product roadmap */}
-        <Reveal className="mt-16">
-          <h3 className="font-mono text-xs tracking-widest text-muted-foreground">{'ПЛАН РАЗВИТИЯ ПРОДУКТА'}</h3>
-        </Reveal>
-        <ol className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-4">
-          {roadmap.map((r, i) => (
-            <Reveal key={r.quarter} delay={i * 120} as="li" className="flex">
-              <div
-                className={`flex w-full flex-col border p-5 transition-[border-color,background-color,transform] duration-500 ease-out hover:-translate-y-1 hover:bg-card ${
-                  r.status === 'now' ? 'border-lime bg-card' : 'border-border hover:border-foreground'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs tracking-widest text-accent">{r.quarter}</span>
-                  {r.status === 'now' && (
-                    <span className="flex items-center gap-1.5 font-mono text-[10px] tracking-widest text-muted-foreground">
-                      <span className="size-1.5 rounded-full bg-lime" />
-                      СЕЙЧАС
-                    </span>
-                  )}
-                </div>
-                <div className="mt-3 font-bold leading-snug">{r.title}</div>
-                <ul className="mt-4 flex flex-col gap-1.5 text-sm leading-relaxed text-muted-foreground">
-                  {r.items.map((it) => (
-                    <li key={it} className="flex gap-2">
-                      <span>—</span>
-                      <span>{it}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
-        </ol>
 
         {/* Social impact */}
         <Reveal delay={200} className="mt-16 border border-foreground bg-card p-6 md:p-10">
