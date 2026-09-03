@@ -31,10 +31,22 @@ export function SiteHeader() {
             ДОРОЖНАЯ КАРТА
           </a>
           <a
+            href="#scenarios"
+            className="whitespace-nowrap font-mono text-xs font-semibold tracking-widest hover:text-accent"
+          >
+            СЦЕНАРИИ
+          </a>
+          <a
             href="#calculator"
             className="whitespace-nowrap font-mono text-xs font-semibold tracking-widest hover:text-accent"
           >
             КАЛЬКУЛЯТОР
+          </a>
+          <a
+            href="#goal"
+            className="whitespace-nowrap font-mono text-xs font-semibold tracking-widest hover:text-accent"
+          >
+            ЦЕЛЬ
           </a>
           <a
             href="#quiz"
