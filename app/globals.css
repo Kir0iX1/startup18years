@@ -108,20 +108,54 @@
   --chart-5: oklch(0.45 0.01 260);
 }
 
-/* Theme change: colours swap instantly, then one cheap opacity fade on <body>.
-   Animating a single composited property stays smooth; transitioning every
-   element's colours at once is what caused the lag. */
-@keyframes theme-fade-in {
-  from {
-    opacity: 0;
-  }
+/* ---------- Theme change animation ----------
+   Preferred: View Transitions API. The browser cross-fades two full-page
+   snapshots on the GPU — no element repaints, so it is smooth everywhere.
+   The new theme "wipes" in from the top-right corner where the toggle lives. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  animation-name: theme-old-fade;
+}
+
+::view-transition-new(root) {
+  animation-name: theme-new-wipe;
+}
+
+@keyframes theme-old-fade {
   to {
     opacity: 1;
   }
 }
 
-html[data-theme-switching] body {
-  animation: theme-fade-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+@keyframes theme-new-wipe {
+  from {
+    clip-path: circle(0% at calc(100% - 4rem) 1.5rem);
+  }
+  to {
+    clip-path: circle(160% at calc(100% - 4rem) 1.5rem);
+  }
+}
+
+/* Fallback for browsers without View Transitions: one cheap opacity fade on <body>. */
+@supports not (view-transition-name: root) {
+  @keyframes theme-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  html[data-theme-switching] body {
+    animation: theme-fade-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
 }
 
 /* While the palette swaps, pause per-element colour transitions so nothing

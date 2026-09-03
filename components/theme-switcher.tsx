@@ -11,12 +11,40 @@ function readTheme(): Theme {
   return document.documentElement.getAttribute('data-theme') === 'night' ? 'night' : 'cream'
 }
 
-function applyTheme(theme: Theme) {
+function setThemeAttribute(theme: Theme) {
   const html = document.documentElement
-  html.setAttribute('data-theme-switching', '')
   if (theme === 'night') html.setAttribute('data-theme', 'night')
   else html.removeAttribute('data-theme')
   window.localStorage.setItem(THEME_STORAGE_KEY, theme)
+}
+
+/**
+ * Smooth theme change without per-element repaint cost.
+ *
+ * Preferred path: View Transitions API. The browser snapshots the page before
+ * and after the swap and cross-fades the two snapshots as GPU textures —
+ * nothing in the DOM animates, so it stays smooth on weak hardware.
+ *
+ * Fallback: a single opacity fade on <body> (see globals.css).
+ */
+function applyTheme(theme: Theme) {
+  const html = document.documentElement
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  if (reduceMotion) {
+    setThemeAttribute(theme)
+    return
+  }
+
+  if (typeof document.startViewTransition === 'function') {
+    html.setAttribute('data-theme-switching', '')
+    const transition = document.startViewTransition(() => setThemeAttribute(theme))
+    transition.finished.finally(() => html.removeAttribute('data-theme-switching'))
+    return
+  }
+
+  html.setAttribute('data-theme-switching', '')
+  setThemeAttribute(theme)
   // Matches the body fade duration in globals.css
   window.setTimeout(() => html.removeAttribute('data-theme-switching'), 400)
 }
