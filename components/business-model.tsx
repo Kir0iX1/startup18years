@@ -148,9 +148,9 @@ export function BusinessModel() {
                   type="button"
                   onClick={() => setActiveCard(i)}
                   aria-pressed={active}
-                  className={`flex h-full w-full flex-col border p-6 text-left transition-all duration-300 ${
+                  className={`flex h-full w-full flex-col border p-6 text-left transition-[background-color,border-color,color,transform] duration-500 ease-out hover:-translate-y-1 ${
                     active
-                      ? 'border-primary bg-primary text-primary-foreground shadow-[8px_8px_0_0_var(--lime)]'
+                      ? 'border-primary bg-primary text-primary-foreground'
                       : 'border-border bg-card hover:border-foreground'
                   }`}
                 >
@@ -184,7 +184,7 @@ export function BusinessModel() {
         </Reveal>
         <div className="mt-6 grid grid-cols-2 gap-px bg-border md:grid-cols-3">
           {sustainability.map((u, i) => (
-            <Reveal key={u.label} delay={i * 80} className="min-w-0 bg-background p-5">
+            <Reveal key={u.label} delay={i * 80} className="min-w-0 bg-background p-5 transition-colors duration-500 ease-out hover:bg-card">
               <div className="font-mono text-xs tracking-widest text-muted-foreground">{u.label}</div>
               <div className="mt-2 text-xl font-bold tracking-tight text-pretty md:text-2xl">{u.value}</div>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{u.note}</p>
@@ -200,8 +200,8 @@ export function BusinessModel() {
           {roadmap.map((r, i) => (
             <Reveal key={r.quarter} delay={i * 120} as="li" className="flex">
               <div
-                className={`flex w-full flex-col border p-5 ${
-                  r.status === 'now' ? 'border-lime bg-card' : 'border-border'
+                className={`flex w-full flex-col border p-5 transition-[border-color,background-color,transform] duration-500 ease-out hover:-translate-y-1 hover:bg-card ${
+                  r.status === 'now' ? 'border-lime bg-card' : 'border-border hover:border-foreground'
                 }`}
               >
                 <div className="flex items-center justify-between">
