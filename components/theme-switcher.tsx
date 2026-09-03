@@ -14,10 +14,11 @@ function readTheme(): Theme {
 function applyTheme(theme: Theme) {
   const html = document.documentElement
   html.setAttribute('data-theme-switching', '')
-  window.setTimeout(() => html.removeAttribute('data-theme-switching'), 700)
   if (theme === 'night') html.setAttribute('data-theme', 'night')
   else html.removeAttribute('data-theme')
   window.localStorage.setItem(THEME_STORAGE_KEY, theme)
+  // Matches the body fade duration in globals.css
+  window.setTimeout(() => html.removeAttribute('data-theme-switching'), 400)
 }
 
 /**
@@ -51,9 +52,9 @@ export function ThemeToggle() {
     >
       {/* Mini palette swatch: background / foreground / accent */}
       <span aria-hidden="true" className="flex h-4 w-9 overflow-hidden border border-border">
-        <span className="flex-1 bg-background transition-colors duration-500" />
-        <span className="flex-1 bg-foreground transition-colors duration-500" />
-        <span className="flex-1 bg-lime transition-colors duration-500" />
+        <span className="flex-1 bg-background" />
+        <span className="flex-1 bg-foreground" />
+        <span className="flex-1 bg-lime" />
       </span>
       <span className="relative flex size-4 items-center justify-center">
         <Sun

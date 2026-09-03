@@ -108,13 +108,26 @@
   --chart-5: oklch(0.45 0.01 260);
 }
 
-/* Smooth cross-fade when the theme changes */
-html[data-theme-switching],
+/* Theme change: colours swap instantly, then one cheap opacity fade on <body>.
+   Animating a single composited property stays smooth; transitioning every
+   element's colours at once is what caused the lag. */
+@keyframes theme-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+html[data-theme-switching] body {
+  animation: theme-fade-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* While the palette swaps, pause per-element colour transitions so nothing
+   visibly lags behind the new theme. */
 html[data-theme-switching] * {
-  transition:
-    background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    color 0.6s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transition-duration: 0s !important;
 }
 
 @layer base {
@@ -156,10 +169,6 @@ html[data-theme-switching] * {
 }
 
 /* Reveal blocks that are also hoverable must keep the lift on top of the reveal transform */
-.reveal.is-visible.hover-card {
-  will-change: transform;
-}
-
 .reveal.is-visible.hover-card:hover {
   transform: translateY(-4px);
 }
@@ -208,6 +217,8 @@ html[data-theme-switching] * {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+  /* Release the compositor layer once the entrance is done */
+  will-change: auto;
 }
 
 /* Pop-in for values that change (calculator results) */
