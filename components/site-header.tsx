@@ -64,7 +64,7 @@ export function SiteHeader() {
             href="#business"
             className="whitespace-nowrap font-mono text-xs font-semibold tracking-widest hover:text-accent"
           >
-            БИЗНЕС-МОДЕЛЬ
+            О ПРОЕКТЕ
           </a>
           <a
             href="#principles"

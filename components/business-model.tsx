@@ -6,112 +6,117 @@ import { Reveal } from '@/components/reveal'
 
 const market = [
   {
-    label: 'TAM',
-    title: 'Весь рынок',
+    label: 'АУДИТОРИЯ',
+    title: 'Вся Россия',
     value: '11,2 млн',
-    desc: 'молодых людей 18–25 лет в России, ищущих первый доход или смену профессии',
+    desc: 'молодых людей 18–25 лет, ищущих первый доход или понятный путь в профессию',
   },
   {
-    label: 'SAM',
-    title: 'Доступный рынок',
+    label: 'ОНЛАЙН',
+    title: 'Активные в сети',
     value: '3,4 млн',
-    desc: 'активно используют онлайн-курсы, фриланс-биржи и карьерные сервисы',
+    desc: 'уже используют онлайн-курсы, фриланс-биржи и карьерные сервисы',
   },
   {
-    label: 'SOM',
-    title: 'Цель на 3 года',
-    value: '120 тыс.',
-    desc: 'платящих пользователей при конверсии 3,5% из бесплатной версии',
+    label: 'ЦЕЛЬ',
+    title: 'На 3 года',
+    value: '500 тыс.',
+    desc: 'пользователей, которые нашли первый доход с помощью платформы — бесплатно',
   },
 ]
 
-const plans = [
+const principles = [
   {
-    name: 'Free',
-    price: '0 ₽',
-    audience: 'Точка входа',
-    features: ['Каталог профессий', 'Калькулятор дохода', 'Тест на профиль', '5 вопросов ментору в день'],
-    highlight: false,
-  },
-  {
-    name: 'Pro',
-    price: '490 ₽/мес',
-    audience: 'Основной доход',
+    name: 'Бесплатно',
+    tag: 'Навсегда',
+    audience: 'Для каждого пользователя',
     features: [
-      'Безлимитный ИИ-ментор',
-      'Персональная дорожная карта',
-      'Трекер целей и прогресса',
-      'Разбор портфолио и резюме',
-      'Закрытое сообщество',
+      'Каталог профессий и зарплат',
+      'Калькулятор и симулятор цели',
+      'ИИ-ментор без лимитов',
+      'Тест на профиль',
+      'Дорожная карта роста',
     ],
     highlight: true,
   },
   {
-    name: 'B2B',
-    price: 'от 90 000 ₽/год',
-    audience: 'Вузы и колледжи',
+    name: 'Без рекламы',
+    tag: 'Принцип',
+    audience: 'Никаких баннеров и продаж курсов',
     features: [
-      'Кабинет учебного заведения',
-      'Аналитика трудоустройства',
-      'Интеграция с карьерным центром',
-      'Брендирование под вуз',
+      'Не продаём данные пользователей',
+      'Не рекламируем платные курсы',
+      'Не берём комиссию с заработка',
+      'Открытый исходный код на GitHub',
+    ],
+    highlight: false,
+  },
+  {
+    name: 'Для вузов',
+    tag: 'Партнёрство',
+    audience: 'Тоже бесплатно',
+    features: [
+      'Внедрение в карьерные центры',
+      'Материалы для кураторов',
+      'Статистика трудоустройства',
+      'Совместные мероприятия',
     ],
     highlight: false,
   },
 ]
 
-const unitEconomics = [
-  { label: 'CAC', value: '380 ₽', note: 'стоимость привлечения через контент и рефералов' },
-  { label: 'ARPU', value: '490 ₽', note: 'средний доход с платящего пользователя в месяц' },
-  { label: 'Retention 6 мес.', value: '58%', note: 'удержание за счёт трекера целей' },
-  { label: 'LTV', value: '4 100 ₽', note: 'пожизненная ценность клиента' },
-  { label: 'LTV / CAC', value: '10,8x', note: 'здоровый показатель — выше 3x' },
-  { label: 'Payback', value: '< 1 мес.', note: 'окупаемость привлечения' },
+const sustainability = [
+  { label: 'Гранты', value: 'Росмолодёжь', note: 'конкурсы молодёжных социальных проектов до 1 млн ₽' },
+  { label: 'Фонды', value: 'ФСИ', note: 'программа «Студенческий стартап» — 1 млн ₽ на MVP' },
+  { label: 'Хостинг', value: '0 ₽', note: 'бесплатный тариф Vercel покрывает до 100 тыс. визитов' },
+  { label: 'ИИ', value: '~2 000 ₽', note: 'месячная стоимость ИИ-ментора при 10 тыс. запросов' },
+  { label: 'Команда', value: 'Студенты', note: 'разработка силами студентов — практика вместо зарплаты' },
+  { label: 'Итого', value: '< 5 000 ₽', note: 'ежемесячные расходы платформы на 10 тыс. пользователей' },
 ]
 
 const roadmap = [
   {
     quarter: 'Q4 2026',
     title: 'MVP и первые 1 000 пользователей',
-    items: ['Запуск платформы (готово)', 'ИИ-ментор (готово)', 'Первые пилоты в 2 вузах'],
+    items: ['Запуск платформы (готово)', 'ИИ-ментор (готово)', 'Пилот в 2 вузах'],
     status: 'now',
   },
   {
     quarter: 'Q1 2027',
-    title: 'Монетизация',
-    items: ['Подписка Pro', 'Личный кабинет и трекер целей', 'Мобильное приложение'],
+    title: 'Личный кабинет',
+    items: ['Трекер целей и прогресса', 'Сохранение результатов теста', 'Мобильная версия PWA'],
     status: 'next',
   },
   {
     quarter: 'Q2–Q3 2027',
-    title: 'B2B и партнёрства',
-    items: ['Кабинет вуза', 'Интеграции с hh.ru и биржами', 'Партнёрка с курсами'],
+    title: 'Сообщество',
+    items: ['Истории успеха пользователей', 'Открытые вакансии для новичков', 'Партнёрства с 10 вузами'],
     status: 'later',
   },
   {
     quarter: '2028',
     title: 'Масштабирование',
-    items: ['Выход на СНГ', '100 000+ платящих', 'Раунд А'],
+    items: ['Выход на СНГ', '100 000+ пользователей', 'Грант на развитие'],
     status: 'later',
   },
 ]
 
 export function BusinessModel() {
-  const [activePlan, setActivePlan] = useState(1)
+  const [activeCard, setActiveCard] = useState(0)
 
   return (
     <section id="business" className="border-b border-border">
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-20">
         <Reveal>
           <div className="font-mono text-xs tracking-widest text-muted-foreground">
-            {'РАЗДЕЛ 08 — БИЗНЕС-МОДЕЛЬ'}
+            {'РАЗДЕЛ 08 — МОДЕЛЬ ПРОЕКТА'}
           </div>
           <h2 className="mt-4 text-balance text-3xl font-bold uppercase tracking-tight md:text-5xl">
             {'Почему это стартап, а не сайт'}
           </h2>
           <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
             {
-              'СТАРТ18 — платформа с понятной моделью монетизации, измеримым рынком и юнит-экономикой, которая сходится уже на первом платящем пользователе.'
+              'СТАРТ18 — социальный стартап. Мы не берём денег с пользователей: платформа полностью бесплатна, без рекламы и скрытых платежей. Задача — дать каждому 18-летнему честный старт в заработке.'
             }
           </p>
         </Reveal>
@@ -130,18 +135,18 @@ export function BusinessModel() {
           ))}
         </div>
 
-        {/* Pricing */}
+        {/* Principles */}
         <Reveal className="mt-16">
-          <h3 className="font-mono text-xs tracking-widest text-muted-foreground">{'МОНЕТИЗАЦИЯ — ТРИ ИСТОЧНИКА ДОХОДА'}</h3>
+          <h3 className="font-mono text-xs tracking-widest text-muted-foreground">{'ТРИ ПРИНЦИПА — ВСЁ БЕСПЛАТНО'}</h3>
         </Reveal>
         <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-          {plans.map((p, i) => {
-            const active = activePlan === i
+          {principles.map((p, i) => {
+            const active = activeCard === i
             return (
               <Reveal key={p.name} delay={i * 100}>
                 <button
                   type="button"
-                  onClick={() => setActivePlan(i)}
+                  onClick={() => setActiveCard(i)}
                   aria-pressed={active}
                   className={`flex h-full w-full flex-col border p-6 text-left transition-all duration-300 ${
                     active
@@ -153,12 +158,12 @@ export function BusinessModel() {
                     <span className="text-2xl font-bold">{p.name}</span>
                     {p.highlight && (
                       <span className="bg-lime px-2 py-1 font-mono text-[10px] font-bold tracking-widest text-lime-foreground">
-                        ЯДРО
+                        0 ₽
                       </span>
                     )}
                   </div>
                   <div className="mt-1 font-mono text-xs tracking-wide opacity-70">{p.audience}</div>
-                  <div className="mt-6 text-3xl font-bold tracking-tight">{p.price}</div>
+                  <div className="mt-6 text-3xl font-bold tracking-tight">{p.tag}</div>
                   <ul className="mt-6 flex flex-col gap-2 text-sm leading-relaxed">
                     {p.features.map((f) => (
                       <li key={f} className="flex gap-2">
@@ -173,12 +178,12 @@ export function BusinessModel() {
           })}
         </div>
 
-        {/* Unit economics */}
+        {/* Sustainability */}
         <Reveal className="mt-16">
-          <h3 className="font-mono text-xs tracking-widest text-muted-foreground">{'ЮНИТ-ЭКОНОМИКА — ПОДПИСКА PRO'}</h3>
+          <h3 className="font-mono text-xs tracking-widest text-muted-foreground">{'НА ЧЁМ ДЕРЖИТСЯ ПРОЕКТ БЕЗ ПЛАТЫ С ПОЛЬЗОВАТЕЛЕЙ'}</h3>
         </Reveal>
         <div className="mt-6 grid grid-cols-2 gap-px bg-border md:grid-cols-3 lg:grid-cols-6">
-          {unitEconomics.map((u, i) => (
+          {sustainability.map((u, i) => (
             <Reveal key={u.label} delay={i * 80} className="bg-background p-5">
               <div className="font-mono text-xs tracking-widest text-muted-foreground">{u.label}</div>
               <div className="mt-2 text-2xl font-bold tracking-tight">{u.value}</div>
@@ -222,29 +227,29 @@ export function BusinessModel() {
           ))}
         </ol>
 
-        {/* Ask */}
+        {/* Social impact */}
         <Reveal delay={200} className="mt-16 border border-foreground bg-card p-6 md:p-10">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:items-center">
             <div>
-              <div className="font-mono text-xs tracking-widest text-accent">{'ЗАПРОС НА ИНВЕСТИЦИИ'}</div>
+              <div className="font-mono text-xs tracking-widest text-accent">{'СОЦИАЛЬНЫЙ ЭФФЕКТ'}</div>
               <div className="mt-3 text-3xl font-bold uppercase tracking-tight md:text-4xl">
-                {'1 000 000 ₽ на 12 месяцев'}
+                {'1 000 первых зарплат за год'}
               </div>
               <p className="mt-3 max-w-xl text-pretty leading-relaxed text-muted-foreground">
                 {
-                  'Цель раунда — довести продукт до 10 000 активных пользователей и первых 500 подписчиков Pro, подтвердив юнит-экономику на реальных данных.'
+                  'Цель первого года — помочь тысяче молодых людей получить первый честный доход. Каждая история успеха — это подтверждение, что платформа работает, и аргумент для грантов на развитие.'
                 }
               </p>
             </div>
             <div className="grid grid-cols-2 gap-x-8 gap-y-3 font-mono text-xs tracking-wide">
-              <span className="text-muted-foreground">Разработка</span>
-              <span className="text-right font-bold">45%</span>
-              <span className="text-muted-foreground">Маркетинг</span>
-              <span className="text-right font-bold">30%</span>
-              <span className="text-muted-foreground">ИИ-инфраструктура</span>
-              <span className="text-right font-bold">15%</span>
-              <span className="text-muted-foreground">Юр. и операционка</span>
-              <span className="text-right font-bold">10%</span>
+              <span className="text-muted-foreground">Плата за доступ</span>
+              <span className="text-right font-bold">0 ₽</span>
+              <span className="text-muted-foreground">Реклама</span>
+              <span className="text-right font-bold">Нет</span>
+              <span className="text-muted-foreground">Комиссия</span>
+              <span className="text-right font-bold">Нет</span>
+              <span className="text-muted-foreground">Исходный код</span>
+              <span className="text-right font-bold">Открыт</span>
             </div>
           </div>
         </Reveal>
