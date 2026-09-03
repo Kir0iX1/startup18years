@@ -63,7 +63,7 @@ export function Roadmap() {
 
         <ol className="mt-10 grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <Reveal key={s.phase} as="li" delay={i * 130} className="flex flex-col bg-background p-6">
+            <Reveal key={s.phase} as="li" delay={i * 130} className="hover-card hover-card-flat flex flex-col bg-background p-6 hover:bg-card">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-xs font-bold tracking-widest text-accent">
                   {String(i + 1).padStart(2, '0')}

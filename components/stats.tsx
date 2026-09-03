@@ -93,7 +93,7 @@ export function Stats() {
           <Reveal
             key={s.label}
             delay={i * 120}
-            className={`p-6 md:p-8 ${i > 0 ? 'border-t border-border md:border-l md:border-t-0' : ''}`}
+            className={`hover-card hover-card-flat p-6 hover:bg-card md:p-8 ${i > 0 ? 'border-t border-border md:border-l md:border-t-0' : ''}`}
           >
             <CountUp target={s.target} prefix={s.prefix} suffix={s.suffix} decimals={s.decimals} />
             <p className="mt-2 font-mono text-xs uppercase leading-relaxed tracking-wide text-muted-foreground">

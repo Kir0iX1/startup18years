@@ -112,10 +112,10 @@ export function BusinessModel() {
                   type="button"
                   onClick={() => setActiveCard(i)}
                   aria-pressed={active}
-                  className={`flex h-full w-full flex-col border p-6 text-left transition-[background-color,border-color,color,transform] duration-500 ease-out hover:-translate-y-1 ${
+                  className={`hover-card flex h-full w-full flex-col border p-6 text-left ${
                     active
                       ? 'border-primary bg-primary text-primary-foreground'
-                      : 'border-border bg-card hover:border-foreground'
+                      : 'border-border bg-card'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -143,7 +143,7 @@ export function BusinessModel() {
         </div>
 
         {/* Social impact */}
-        <Reveal delay={200} className="mt-16 border border-foreground bg-card p-6 md:p-10">
+        <Reveal delay={200} className="hover-card mt-16 border border-foreground bg-card p-6 md:p-10">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:items-center">
             <div>
               <div className="font-mono text-xs tracking-widest text-accent">{'СОЦИАЛЬНЫЙ ЭФФЕКТ'}</div>

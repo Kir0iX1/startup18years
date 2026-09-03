@@ -154,7 +154,7 @@ export function Quiz() {
                       key={a.text}
                       type="button"
                       onClick={() => answer(a.track)}
-                      className="border border-border bg-card p-4 text-left text-sm leading-relaxed transition-all duration-200 hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
+                      className="hover-card border border-border bg-card p-4 text-left text-sm leading-relaxed hover:border-accent!"
                     >
                       {a.text}
                     </button>

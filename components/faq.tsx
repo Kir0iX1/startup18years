@@ -56,7 +56,7 @@ export function Faq() {
             const isOpen = openIndex === i
             return (
               <Reveal key={item.q} delay={i * 60}>
-                <div className="bg-background">
+                <div className="bg-background transition-colors duration-500 ease-out hover:bg-card">
                   <h3>
                     <button
                       type="button"

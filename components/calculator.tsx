@@ -55,7 +55,7 @@ export function Calculator() {
 
         <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-5">
           {/* Inputs */}
-          <Reveal delay={120} className="flex flex-col gap-6 border border-border bg-card p-6 lg:col-span-3 md:p-8">
+          <Reveal delay={120} className="hover-card hover-card-flat flex flex-col gap-6 border border-border bg-card p-6 hover:border-foreground! lg:col-span-3 md:p-8">
             <div>
               <label
                 htmlFor="track"

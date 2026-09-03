@@ -48,7 +48,7 @@ export function Principles() {
 
         <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
           {principles.map((p, i) => (
-            <Reveal key={p.n} delay={(i % 3) * 120} className="border-t border-primary-foreground/20 pt-4">
+            <Reveal key={p.n} delay={(i % 3) * 120} className="hover-card hover-card-flat border-t border-primary-foreground/20 pt-4 hover:border-lime!">
               <div className="font-mono text-xs font-bold tracking-widest text-accent">
                 {p.n}
               </div>

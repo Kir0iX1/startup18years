@@ -205,7 +205,7 @@ export function Professions() {
             <article
               key={p.title}
               style={{ '--card-delay': `${i * 60}ms` } as CSSProperties}
-              className="animate-card-in flex flex-col border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="animate-card-in hover-card flex flex-col border border-border bg-card p-6"
             >
               <div className="flex items-start justify-between gap-3">
                 <span className="font-mono text-xs tracking-widest text-muted-foreground">

@@ -38,7 +38,7 @@ export function GoalSimulator() {
             <fieldset>
               <legend className="font-mono text-xs font-bold tracking-widest">01 / ВЫБЕРИ ЦЕЛЬ</legend>
               <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
-                {goals.map((item, index) => { const Icon = item.icon; return <button key={item.name} type="button" onClick={() => setGoalIndex(index)} aria-pressed={index === goalIndex} className={`flex min-h-24 flex-col items-start justify-between border p-3 text-left transition-colors ${index === goalIndex ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:bg-secondary'}`}><Icon size={20} /><span className="text-sm font-bold">{item.name}</span></button> })}
+                {goals.map((item, index) => { const Icon = item.icon; return <button key={item.name} type="button" onClick={() => setGoalIndex(index)} aria-pressed={index === goalIndex} className={`hover-card flex min-h-24 flex-col items-start justify-between border p-3 text-left ${index === goalIndex ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:bg-secondary'}`}><Icon size={20} /><span className="text-sm font-bold">{item.name}</span></button> })}
               </div>
             </fieldset>
 

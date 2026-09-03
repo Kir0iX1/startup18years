@@ -39,7 +39,7 @@ export function Hero() {
 
       <div className="grid grid-cols-1 border-t border-border md:grid-cols-3">
         <Reveal delay={150}>
-          <div className="h-full bg-lime p-6 text-lime-foreground transition-transform duration-300 ease-out hover:-translate-y-1 md:p-8">
+          <div className="hover-card hover-card-flat h-full bg-lime p-6 text-lime-foreground hover:brightness-95 md:p-8">
             <div className="font-mono text-xs tracking-widest">ШАГ 01 — НАВЫК</div>
             <p className="mt-3 text-lg font-semibold leading-snug">
               {'Выбери навык, за который рынок платит уже сегодня.'}
@@ -47,7 +47,7 @@ export function Hero() {
           </div>
         </Reveal>
         <Reveal delay={280}>
-          <div className="h-full bg-secondary p-6 transition-transform duration-300 ease-out hover:-translate-y-1 md:p-8">
+          <div className="hover-card hover-card-flat h-full bg-secondary p-6 hover:bg-card md:p-8">
             <div className="font-mono text-xs tracking-widest text-muted-foreground">
               ШАГ 02 — ПРАКТИКА
             </div>

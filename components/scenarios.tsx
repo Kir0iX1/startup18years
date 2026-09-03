@@ -59,7 +59,7 @@ export function Scenarios() {
             </div>
             <ol className="grid bg-primary-foreground/20 md:grid-cols-4 md:gap-px">
               {scenario.stages.map(([period, text], index) => (
-                <li key={period} className="border-b border-primary-foreground/20 bg-primary p-6 last:border-b-0 md:border-b-0">
+                <li key={period} className="border-b border-primary-foreground/20 bg-primary p-6 transition-colors duration-500 ease-out last:border-b-0 hover:bg-primary-foreground/5 md:border-b-0">
                   <div className="flex items-center gap-3"><span className="grid size-7 place-items-center bg-lime font-mono text-xs font-bold text-lime-foreground">{index + 1}</span><span className="font-mono text-xs tracking-widest opacity-60">{period}</span></div>
                   <p className="mt-4 text-sm font-semibold leading-relaxed">{text}</p>
                 </li>

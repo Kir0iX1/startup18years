@@ -84,6 +84,49 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* --- Global motion: every interactive element eases the same way --- */
+  a,
+  button,
+  summary,
+  input,
+  select,
+  textarea,
+  [role='button'] {
+    transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+    transition-duration: 0.45s;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+/* --- Hover for content blocks: subtle lift + border darkening --- */
+.hover-card {
+  transition-property: transform, border-color, background-color, box-shadow, color;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--foreground);
+  box-shadow: 0 12px 32px -16px oklch(0.16 0.005 80 / 0.25);
+}
+
+/* Reveal blocks that are also hoverable must keep the lift on top of the reveal transform */
+.reveal.is-visible.hover-card {
+  will-change: transform;
+}
+
+.reveal.is-visible.hover-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Flat variant: for cells inside shared-border grids — colour only, no lift */
+.hover-card.hover-card-flat:hover,
+.reveal.is-visible.hover-card.hover-card-flat:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--border);
 }
 
 /* --- Horizontal nav scroll (mobile) — thin accent scrollbar --- */
@@ -169,5 +212,10 @@
   .animate-value,
   .animate-card-in {
     animation: none;
+  }
+  .hover-card,
+  .hover-card:hover {
+    transform: none;
+    transition: none;
   }
 }
