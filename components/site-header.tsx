@@ -50,7 +50,7 @@ export function SiteHeader() {
           </a>
           <a
             href="#mentor"
-            className="whitespace-nowrap font-mono text-xs font-semibold tracking-widest text-accent hover:text-foreground"
+            className="whitespace-nowrap font-mono text-xs font-semibold tracking-widest hover:text-accent"
           >
             ИИ-МЕНТОР
           </a>

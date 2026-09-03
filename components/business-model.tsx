@@ -182,11 +182,11 @@ export function BusinessModel() {
         <Reveal className="mt-16">
           <h3 className="font-mono text-xs tracking-widest text-muted-foreground">{'НА ЧЁМ ДЕРЖИТСЯ ПРОЕКТ БЕЗ ПЛАТЫ С ПОЛЬЗОВАТЕЛЕЙ'}</h3>
         </Reveal>
-        <div className="mt-6 grid grid-cols-2 gap-px bg-border md:grid-cols-3 lg:grid-cols-6">
+        <div className="mt-6 grid grid-cols-2 gap-px bg-border md:grid-cols-3">
           {sustainability.map((u, i) => (
-            <Reveal key={u.label} delay={i * 80} className="bg-background p-5">
+            <Reveal key={u.label} delay={i * 80} className="min-w-0 bg-background p-5">
               <div className="font-mono text-xs tracking-widest text-muted-foreground">{u.label}</div>
-              <div className="mt-2 text-2xl font-bold tracking-tight">{u.value}</div>
+              <div className="mt-2 text-xl font-bold tracking-tight text-pretty md:text-2xl">{u.value}</div>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{u.note}</p>
             </Reveal>
           ))}
